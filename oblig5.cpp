@@ -26,17 +26,24 @@ int main () {
 }
 
 
+/**
+ *  Går gjennom Hele treet og fjerner alle løkker ved å lage identiske 
+ *  kopier av noder som pekes på av flere foreldre. 
+ *
+ *  @param   node  -  Roten i treet som man begynner fra
+ *  @see     kopier(...)
+ */
 void brettUt(Node* node) {
     Node* kopi = nullptr;
 
-    node->besokt = true;
-    for(int i = 0; i < node->antNaboer; i++) {
-        if(node->naboer[i]->besokt) {
+    node->besokt = true;                                // Besøker noden
+    for(int i = 0; i < node->antNaboer; i++) {          // Går gjennom nodens barn
+        if(node->naboer[i]->besokt) {                   // Allerede besøkt? 
             cout << node->ID << " lager Kopi av: " << node->naboer[i]->ID << endl;
-            kopi = kopier(node->naboer[i]);
-            node->naboer[i] = kopi;
+            kopi = kopier(node->naboer[i]);             // Lager kopi av barnet
+            node->naboer[i] = kopi;                     // Bytter ut den gamle med kopien
         }
-        brettUt(node->naboer[i]);
+        brettUt(node->naboer[i]);                       // Går videre gjennom treet
     }
 }
 
