@@ -14,35 +14,18 @@ void sortTwoArrays(int a[], const int b[], const int aLen, const int bLen);
  * Main program
  */
 int main() {
-
-    srand(static_cast<unsigned int>(time(0)));                          // Set up random number generator
-
-    const int SIZE1 = 15 + rand() % 6;                                  // Random size between 15 and 20
-    const int SIZE2 = 5 + rand() % 6;                                   // Random size between 5 and 10
-
-    int array1[SIZE1];
-    int array2[SIZE2];
-
-    for (int i = 0; i < SIZE2; i++) array2[i] = (rand() % 21 - 10);     // Fill array2 with integers between -10 and 10
-
-    int zerosToAdd = SIZE2;                                             // Number of zeros to add to array1
-    for (int i = 0; i < SIZE1; i++) {
-        if (zerosToAdd > 0 && rand() % 2 == 0) {                        // Either add a 0 to array1
-            array1[i] = 0;
-            zerosToAdd--;
-        } else array1[i] = (rand() % 21 - 10);                          // Or add random number between -10 and 10
-    }
-    for (int i = SIZE1 - zerosToAdd; i < SIZE1; i++) array1[i] = 0;     // Fills the end of array1 with 0 if needed
+    int array1[ARRAY1LENGTH] = {3, 0, 7, -7, 6, 0, 4, 0, -6, 0, 0, -12, 35, 9, 0};
+    int array2[ARRAY2LENGTH] = {17, -3, 4, 66, 8, -9};
 
 
     cout << "Array 1: ";
-    for (int i = 0; i < SIZE1; i++) cout << array1[i] << ' ';
+    for (int i = 0; i < ARRAY1LENGTH; i++) cout << array1[i] << ' ';
     cout << "\nArray 2: ";
-    for (int i = 0; i < SIZE2; i++) cout << array2[i] << ' ';
+    for (int i = 0; i < ARRAY2LENGTH; i++) cout << array2[i] << ' ';
     cout << endl;
 
 
-    sortTwoArrays(array1, array2, SIZE1, SIZE2);                        // Combines and sorts array1 and 2 into the former array
+    sortTwoArrays(array1, array2, ARRAY1LENGTH, ARRAY2LENGTH); 
 
     return 0;
 }
